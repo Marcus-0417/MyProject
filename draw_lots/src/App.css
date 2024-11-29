@@ -1,21 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #all {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background-color: brown;
+  background-image: url(../images/Background.jpg);
+  background-size: cover;
   height: 100vh;
 }
 
-#h1 {
-  font-size: 50px;
+h1 {
+  font-size: 70px;
   text-align: center;
-  color: white;
-  background-color: black;
-  border: 5px solid black;
+  color: rgb(0, 0, 0);
   border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
 }
+
+p {
+  font-size: 20px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
 
 @keyframes rotate {
   0% {
