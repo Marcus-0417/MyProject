@@ -1,7 +1,7 @@
 import "./App.css"
 import React, { useState } from 'react';
 
-const generateLot = (index) => `籤文 ${index + 1}: 這是一個隨機生成的籤文內容。`;
+const generateLot = (index) => `第 ${index + 1} 籤: 籤文內容：`;
 
 const App = () => {
   const [lots, setLots] = useState(Array.from({ length: 100 }, (_, i) => generateLot(i)));
@@ -26,14 +26,14 @@ const App = () => {
       const newResult = [...prev, randomOutcome];
 
       if (randomOutcome === '笑筊' || randomOutcome === '無筊') {
-        // Reset state and force re-draw
+        // 重置狀態並重新擲筊
         alert(`結果為「${randomOutcome}」，請重新抽籤！`);
         setCurrentLot(null);
         setResult([]);
         return newResult;
       }
 
-      // Check for 3 consecutive 聖筊
+      // 確認是否連續3個聖筊
       if (
         newResult.length >= 3 &&
         newResult.slice(-3).every((outcome) => outcome === '聖筊')
@@ -53,7 +53,7 @@ const App = () => {
   };
 
   return (
-    <div id="all" style={{ textAlign: 'center', padding: '20px' }}>
+    <div id="all">
       <h1>求籤程式</h1>
       {currentLot ? (
         <div>
@@ -63,13 +63,14 @@ const App = () => {
       ) : (
         <p>請按下「抽籤」來求籤。</p>
       )}
+
       {!currentLot && (
-        <button onClick={drawLot} style={{ margin: '10px' }}>
+        <button onClick={drawLot}>
           <span>抽籤</span>
         </button>
       )}
       {currentLot && !complete && (
-        <button onClick={throwDivination} style={{ margin: '10px' }}>
+        <button onClick={throwDivination}>
          <span>擲筊</span>
         </button>
       )}
@@ -81,7 +82,7 @@ const App = () => {
       )}
       {complete && (
         <div>
-          <h2 style={{ color: 'green' }}>這次抽籤結果成立！</h2>
+          <h2 style={{ color: 'green' }}>這支籤是要給你的！</h2>
           <button onClick={reset} style={{ margin: '10px', backgroundColor: '#f00', color: '#fff' }}>
             重新抽籤
           </button>

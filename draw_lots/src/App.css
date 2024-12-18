@@ -9,7 +9,7 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  background-image: url(../images/Background.jpg);
+  background-image: url('../images/background.jpg');
   background-size: cover;
   height: 100vh;
 }
@@ -20,7 +20,7 @@ h1 {
   color: rgb(0, 0, 0);
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 30px;
+  margin: 30px auto;
 }
 
 p {
