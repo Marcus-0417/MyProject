@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circle Progress Bar</title>
+    <style>
+        .progress-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 400px auto;
+        }
+        .progress-svg {
+            transform: rotate(-90deg);
+        }
+        .progress-circle {
+            fill: none;
+            stroke-width: 10;
+        }
+        .background-circle {
+            stroke: #f3f3f3;
+        }
+        .foreground-circle {
+            stroke: #4caf50;
+            stroke-dasharray: 314; /* 圓周長度 */
+            stroke-dashoffset: 314; /* 初始狀態 */
+            transition: stroke-dashoffset 0.2s;
+        }
+        .progress-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <svg class="progress-svg" width="100" height="100">
+            <circle class="progress-circle background-circle" cx="50" cy="50" r="45"></circle>
+            <circle class="progress-circle foreground-circle" cx="50" cy="50" r="45" id="foreground"></circle>
+        </svg>
+        <div class="progress-percentage" id="percentage">0%</div>
+    </div>
+
+    <script>
+        function updateProgress(percentage) {
+            var foregroundCircle = document.getElementById("foreground");
+            var percentageElem = document.getElementById("percentage");
+            var circumference = 2 * Math.PI * 45; // 圓周長度
+            var offset = circumference - (percentage / 100 * circumference);
+            foregroundCircle.style.strokeDashoffset = offset;
+            percentageElem.textContent = `${percentage}%`;
+        }
+
+        var currentPercentage = 0;
+        var interval = setInterval(function() {
+            if (currentPercentage >= 100) {
+                clearInterval(interval);
+            } else {
+                currentPercentage++;
+                updateProgress(currentPercentage);
+            }
+        }, 20);
+    </script>
+</body>
+</html>
