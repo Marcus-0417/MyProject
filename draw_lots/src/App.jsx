@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; //npm i framer-motion
 
 const generateLot = (index) => `第 ${index + 1} 籤: 籤文內容：`;
 
