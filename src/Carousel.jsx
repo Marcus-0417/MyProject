@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 
 export default function Carousel() {
     /* 建立目前背景圖的變數 */
@@ -53,7 +54,9 @@ export default function Carousel() {
                     height: '100%',
                 }}>
 
-                    <h3>我是菜單</h3>
+                    <div>
+                        <button></button>
+                    </div>
                     {/* 輪播文字區 */}
                     {/* <h2 style={{
             color: 'white',
