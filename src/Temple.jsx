@@ -9,7 +9,7 @@ export default function Temple() {
             <main>
                 <div id="section-1"><Carousel /></div>
 
-                <div id="section-2">Section2</div>
+                <div id="section-2"></div>
 
                 <div id="section-3">Section3</div>
 

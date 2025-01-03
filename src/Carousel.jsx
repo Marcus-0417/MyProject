@@ -7,14 +7,14 @@ export default function Carousel() {
 
     /* 建立輪播圖片的陣列物件 */
     const slides = [
-        { URL: '', Text: '第一張圖片' },
-        { URL: '', Text: '第二張圖片' },
-        { URL: '', Text: '第三張圖片' },
-        { URL: '', Text: '第四張圖片' },
+        { URL: './images/IMG_8350.jpg', Text: '第一張圖片' },
+        { URL: './images/IMG_8370.jpg', Text: '第二張圖片' },
+        { URL: './images/1920福德正神.jpg', Text: '第三張圖片' },
+        /* { URL: '', Text: '第四張圖片' },
         { URL: '', Text: '第五張圖片' },
         { URL: '', Text: '第六張圖片' },
         { URL: '', Text: '第七張圖片' },
-        { URL: '', Text: '第八張圖片' },
+        { URL: '', Text: '第八張圖片' }, */
     ];
 
     /* 當currentSlide改變時，觸發useEffect */
