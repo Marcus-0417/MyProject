@@ -9,7 +9,7 @@ export default function Carousel() {
     const slides = [
         { URL: './images/IMG_8350.jpg', Text: '第一張圖片' },
         { URL: './images/IMG_8370.jpg', Text: '第二張圖片' },
-        { URL: './images/1920福德正神.jpg', Text: '第三張圖片' },
+        { URL: './images/IMG_1920.jpg', Text: '第三張圖片' },
         /* { URL: '', Text: '第四張圖片' },
         { URL: '', Text: '第五張圖片' },
         { URL: '', Text: '第六張圖片' },
