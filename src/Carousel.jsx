@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import Navbar from "./Navbar";
+import { forwardRef, useEffect, useState } from "react";
 
-export default function Carousel() {
+
+const Carousel = forwardRef((props, ref) => {
+
     /* 建立目前背景圖的變數 */
     const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -39,32 +40,27 @@ export default function Carousel() {
 
     return (
         <>
-            <div className="wrapper" style={{
-                display: 'flex',
-                maxWidth: '100vw',
-                height: '100vh',
-                margin: 'auto',
-            }}>
-                {/* 輪播區 */}
-                <div style={{
-                    backgroundImage: `url(${slides[currentSlide].URL})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    width: '100%',
-                    height: '100%',
+            <div id="section-1" className="section" ref={ref}>
+                <div className="wrapper" style={{
+                    display: 'flex',
+                    maxWidth: '100vw',
+                    height: '100vh',
+                    margin: 'auto',
                 }}>
+                    {/* 輪播區 */}
+                    <div style={{
+                        backgroundImage: `url(${slides[currentSlide].URL})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        width: '100%',
+                        height: '100%',
+                    }}>
 
-                    <div>
-                        <button></button>
                     </div>
-                    {/* 輪播文字區 */}
-                    {/* <h2 style={{
-            color: 'white',
-            textAlign: 'center',
-            lineHeight: '100vh',
-          }}>{slides[currentSlide].Text}</h2> */}
                 </div>
             </div>
         </>
     )
-}
+});
+
+export default Carousel
