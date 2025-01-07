@@ -5,6 +5,10 @@ import History from './History';
 import Event from './Event';
 import Pray from './Pray';
 import Navbar from './Navbar';
+import { CSSTransition } from 'react-transition-group';
+
+/* npm install react-transition-group */
+/* npm install aos */
 
 export default function Temple() {
 
@@ -13,12 +17,32 @@ export default function Temple() {
   /* 控制Navbar區 */
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
 
+  const [iconColor, setIconColor] = useState("black");
+
   const handleToggleNavbar = () => {
     setIsNavbarVisible(!isNavbarVisible);
   };
   const handleCloseNavbar = () => {
     setIsNavbarVisible(false);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const carouselHeight = carouselRef.current.offsetHeight;
+
+      if (scrollY < carouselHeight) {
+        setIconColor("white"); // 淺色背景的深色圖標
+      } else {
+        setIconColor("black"); // 深色背景的淺色圖標
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   /* 控制滾動至指定區塊 */
   const carouselRef = useRef(null); // 創建 <Carousel />
@@ -81,7 +105,7 @@ export default function Temple() {
             top: "30px",
             right: "30px",
             zIndex: 1100,
-            color: "white",
+            color: iconColor, // 動態設置圖標顏色
           }}
         >
           {isNavbarVisible ? "✖" : "☰"} {/* 漢堡圖標 or 打叉 */}
@@ -89,7 +113,13 @@ export default function Temple() {
 
         {/* Navbar 彈窗 */}
 
-        {isNavbarVisible && (
+        <CSSTransition
+          in={isNavbarVisible}
+          timeout={500}
+          classNames="navbar-transition"
+          unmountOnExit
+        >
+
           <div
             style={{
               position: "fixed",
@@ -97,35 +127,22 @@ export default function Temple() {
               left: 0,
               width: "100%",
               height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.5)", // 半透明背景
+              backgroundColor: "rgba(0, 0, 0, 0.8)",
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: "center",
               alignItems: "center",
               zIndex: 1000,
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "500px",
-                height: "100vh",
-                backgroundColor: "#000000",
-                padding: "20px",
-                borderRadius: "10px",
-              }}
-            >
-              <Navbar onScrollToSection={(section) => {
-                if (section === "carousel") scrollToSection(carouselRef);
-                if (section === "history") scrollToSection(historyRef);
-                if (section === "event") scrollToSection(eventRef);
-                if (section === "pray") scrollToSection(prayRef);
-                handleCloseNavbar();
-              }} /> {/* 點擊後關閉Navbar */}
-            </div>
+            <Navbar onScrollToSection={(section) => {
+              if (section === "carousel") scrollToSection(carouselRef);
+              if (section === "history") scrollToSection(historyRef);
+              if (section === "event") scrollToSection(eventRef);
+              if (section === "pray") scrollToSection(prayRef);
+              handleCloseNavbar();
+            }} /> {/* 點擊後關閉Navbar */}
           </div>
-        )}
+        </CSSTransition>
 
         <Carousel ref={carouselRef} />
 
@@ -133,7 +150,7 @@ export default function Temple() {
 
         <Event ref={eventRef} />
 
-        <Pray ref={prayRef}/>
+        <Pray ref={prayRef} />
       </main>
     </>
   );
