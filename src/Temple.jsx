@@ -9,6 +9,7 @@ import { CSSTransition } from 'react-transition-group';
 
 /* npm install react-transition-group */
 /* npm install aos */
+/* npm i swiper */
 
 export default function Temple() {
 
