@@ -31,13 +31,13 @@ const Carousel = forwardRef((props, ref) => {
                     modules={[Autoplay, Pagination, Navigation, EffectFade]}
                     className="mySwiper"
                 >
-                    <SwiperSlide><img src="../images/IMG_1920.jpg" alt="" /></SwiperSlide>
-                    <SwiperSlide><img src="../images/IMG_8350.jpg" alt="" /></SwiperSlide>
-                    <SwiperSlide><img src="../images/IMG_8370.jpg" alt="" /></SwiperSlide>
-                    <SwiperSlide><img src="../images/IMG_8337.jpg" alt="" /></SwiperSlide>
-                    <SwiperSlide><img src="../images/IMG_8345.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="./images/IMG_1920.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="./images/IMG_8350.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="./images/IMG_8370.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="./images/IMG_8337.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="./images/IMG_8345.jpg" alt="" /></SwiperSlide>
                     {/* <SwiperSlide><img src="../images/IMG_8354.jpg" alt="" /></SwiperSlide> */}
-                    <SwiperSlide><img src="../images/IMG_8365.jpg" alt="" /></SwiperSlide>
+                    <SwiperSlide><img src="./images/IMG_8365.jpg" alt="" /></SwiperSlide>
                 </Swiper>
             </div>
         </>

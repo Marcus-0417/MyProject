@@ -31,7 +31,7 @@ const Event = forwardRef((props, ref) => {
         >
           <SwiperSlide style={{ width: "800px", margin: "20px", textAlign: "left", overflow: "hidden", position: "relative", zIndex: "2", display: "flex", justifyContent: "center", alignItems: "center", padding: "80px" }}>
             <div className="Event-box">
-              <img src="../images/IMG_8329.jpg" alt="" />
+              <img src="./images/IMG_8329.jpg" alt="" />
               <h3>諸羅城十六境</h3>
               <p>
                 在清代，台灣的大城市或比較熟鬧的街市，因居民眾多，其祖籍及信仰也有差異，因此民間自行規劃分區，以作為各寺廟勢力範圍的依據。
@@ -41,7 +41,7 @@ const Event = forwardRef((props, ref) => {
           </SwiperSlide>
           <SwiperSlide style={{ width: "800px", margin: "20px", textAlign: "left", overflow: "hidden", position: "relative", zIndex: "2", display: "flex", justifyContent: "center", alignItems: "center", padding: "80px" }}>
             <div className="Event-box">
-              <img src="../images/IMG_8331.jpg" alt="" />
+              <img src="./images/IMG_8331.jpg" alt="" />
               <h3>關廂境</h3>
               <p>
                 位於中央第二商場內，一樓奉祀福德正神、文財神、武財神，二樓奉祀關聖帝君、呂仙祖、灶神。
@@ -59,7 +59,7 @@ const Event = forwardRef((props, ref) => {
           </SwiperSlide>
           <SwiperSlide style={{ width: "800px", margin: "20px", textAlign: "left", overflow: "hidden", position: "relative", zIndex: "2", display: "flex", justifyContent: "center", alignItems: "center", padding: "80px" }}>
             <div className="Event-box">
-              <img src="../images/IMG_8371.jpg" alt="" />
+              <img src="./images/IMG_8371.jpg" alt="" />
               <h3>【南天文衡聖帝】</h3>
               <p>
                 （頭戴帝冠，身穿青色龍袍，手持奏板的關聖帝君代表當前玄靈高上帝 玉皇大天
@@ -71,7 +71,7 @@ const Event = forwardRef((props, ref) => {
           </SwiperSlide>
           <SwiperSlide style={{ width: "800px", margin: "20px", textAlign: "left", overflow: "hidden", position: "relative", zIndex: "2", display: "flex", justifyContent: "center", alignItems: "center", padding: "80px" }}>
             <div className="Event-box">
-              <img src="../images/IMG_8366.jpg" alt="" />
+              <img src="./images/IMG_8366.jpg" alt="" />
               <h3>香環</h3>
               <p>
               這張照片展示了廟宇內部的「香環」景象，這些螺旋狀的線香以其獨特的形態整齊地吊掛在天花板上。香環通常是用於祈福或還願的傳統供奉方式，燃燒時間長，煙霧緩緩升騰，象徵將信眾的祈願傳遞至天上神明。每個香環都配有紅色的牌子，上面寫著祈求平安、健康或其他祝福的文字，並搭配紅色流蘇，增添吉祥喜慶的氣氛。
