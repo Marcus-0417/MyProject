@@ -19,7 +19,7 @@ export default function Temple() {
   /* 控制Navbar區 */
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
 
-  const [iconColor, setIconColor] = useState("black");
+  const [iconColor, setIconColor] = useState("white");
 
   const handleToggleNavbar = () => {
     setIsNavbarVisible(!isNavbarVisible);
@@ -28,6 +28,8 @@ export default function Temple() {
     setIsNavbarVisible(false);
   };
 
+
+  /* 控制三條線"☰"Navbar顏色 */
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -137,7 +139,7 @@ export default function Temple() {
               alignItems: "center",
               zIndex: 1000,
             }}>
-              
+
             <img style={{ position: "fixed", bottom: 0, left: 0, width: "30%", height: "auto", objectFit: "cover" }} src="./images/STONE-2-NBG.png" alt="" />
             <img style={{ position: "fixed", opacity: "0.5", transform: "translate(-50%, 50%)", bottom: "50%", left: "50%", width: "38%", height: "auto", objectFit: "cover", zIndex: "-1" }} src="./images/moon.png" alt="" />
 
