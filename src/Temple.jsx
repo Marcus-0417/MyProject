@@ -14,7 +14,6 @@ import { CSSTransition } from 'react-transition-group';
 export default function Temple() {
 
 
-
   /* 控制Navbar區 */
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
 
@@ -120,7 +119,6 @@ export default function Temple() {
           classNames="navbar-transition"
           unmountOnExit
         >
-
           <div
             style={{
               position: "fixed",
@@ -135,19 +133,22 @@ export default function Temple() {
               zIndex: 1000,
             }}
           >
+            <img style={{ position: "fixed", bottom: 0, left: 0, width: "30%", height: "auto", objectFit: "cover" }} src="./images/STONE-2-NBG.png" alt="" />
+            <img style={{ position: "fixed", opacity: "0.5", transform: "translate(-50%, 50%)", bottom: "50%", left: "50%", width: "38%", height: "auto", objectFit: "cover", zIndex: "-1" }} src="./images/moon.png" alt="" />
             <Navbar onScrollToSection={(section) => {
               if (section === "carousel") scrollToSection(carouselRef);
               if (section === "history") scrollToSection(historyRef);
               if (section === "event") scrollToSection(eventRef);
               if (section === "pray") scrollToSection(prayRef);
-              handleCloseNavbar();
-            }} /> {/* 點擊後關閉Navbar */}
+              handleCloseNavbar(); {/* 點擊後關閉Navbar */}
+            }} />
+            <img style={{ position: "fixed", bottom: 0, right: 0, width: "30%", height: "auto", objectFit: "cover", transform: "scaleX(-1)" }} src="./images/STONE-2-NBG.png" alt="" />
           </div>
         </CSSTransition>
 
-        <Carousel ref={carouselRef} />
+        <Carousel ref={carouselRef} /> {/* 直接綁定 ref */}
 
-        <History ref={historyRef} /> {/* 直接綁定 ref */}
+        <History ref={historyRef} /> 
 
         <Event ref={eventRef} />
 
