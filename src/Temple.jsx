@@ -8,13 +8,16 @@ import Navbar from './Navbar';
 import { CSSTransition } from 'react-transition-group';
 import Draw_lots from './Draw_lots';
 import About from './About';
+import GoToTop from './GoToTop';
+
 
 /* npm install react-transition-group */
 /* npm install aos */
 /* npm i swiper */
+/* npm i react-icons */
+/* npm i framer-motion */
 
 export default function Temple() {
-
 
   /* 控制Navbar區 */
   const [isNavbarVisible, setIsNavbarVisible] = useState(false);
@@ -27,7 +30,6 @@ export default function Temple() {
   const handleCloseNavbar = () => {
     setIsNavbarVisible(false);
   };
-
 
   /* 控制三條線"☰"Navbar顏色 */
   useEffect(() => {
@@ -56,46 +58,126 @@ export default function Temple() {
   const draw_lotsRef = useRef(null); // 創建 <Draw_lots />
   const aboutRef = useRef(null); // 創建 <About />
 
+  // const scrollToSection = (ref) => {
+  //   ref.current.scrollIntoView({ behavior: "smooth" });
+  // };
 
-  const scrollToSection = (ref) => {
-    ref.current.scrollIntoView({ behavior: "smooth" });
-  };
+  // /* 設置滾動區 */
+  // useEffect(() => {
+  //   const sections = document.querySelectorAll('.section');
+  //   let currentSection = 0;
+  //   let isScrolling = false;
+
+  //   const handleWheel = (event) => {
+  //     if (isScrolling) return;
+
+  //     // 當前區塊
+  //     const currentElement = sections[currentSection];
+
+  //     if (currentElement.id === 'section-4') {
+  //       // 檢查滾動方向
+  //       if (event.deltaY > 0) {
+  //         // 如果向下滾動並且到達 section-4 的底部，進入下一個區塊
+  //         const isBottom = currentElement.getBoundingClientRect().bottom <= window.innerHeight;
+  //         if (isBottom) {
+  //           currentSection = Math.min(currentSection + 1, sections.length - 1);
+  //           sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+  //         }
+  //       } else {
+  //         // 如果向上滾動並且到達 section-4 的頂部，進入上一個區塊
+  //         const isTop = currentElement.getBoundingClientRect().top >= 0;
+  //         if (isTop) {
+  //           currentSection = Math.max(currentSection - 1, 0);
+  //           sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+  //         }
+  //       }
+  //       return; // 停止處理，允許自由滾動內部
+  //     }
+
+  //     isScrolling = true;
+
+  //     if (event.deltaY > 0) {
+  //       currentSection = Math.min(currentSection + 1, sections.length - 1);
+  //     } else {
+  //       currentSection = Math.max(currentSection - 1, 0);
+  //     }
+
+  //     sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+
+  //     setTimeout(() => {
+  //       isScrolling = false;
+  //     }, 800); // 與滾動動畫時間一致
+  //   };
+
+  //   window.addEventListener('wheel', handleWheel);
+
+  //   return () => {
+  //     window.removeEventListener('wheel', handleWheel); // 清理事件
+  //   };
+  // }, []);
 
   /* 設置滾動區 */
+  const currentSectionRef = useRef(0); // 用 useRef 管理 currentSection
+  const isScrollingRef = useRef(false); // 用 useRef 管理滾動狀態
+  const sections = useRef([]); // 儲存所有區塊
+
   useEffect(() => {
-    const sections = document.querySelectorAll('.section');
-    let currentSection = 0;
-    let isScrolling = false;
-
+    sections.current = document.querySelectorAll('.section'); // 初始化區塊
     const handleWheel = (event) => {
-      if (isScrolling) return;
+      if (isScrollingRef.current) return;
 
-      if (currentSection === sections.length - 1 && event.deltaY > 0) {
-        // 如果已經在最後一個區塊並且滾動方向向下，停止滾動效果
-        return;
+      const currentSection = currentSectionRef.current;
+      const currentElement = sections.current[currentSection]; // 當前區塊
+
+      // 特殊處理 section-4 自由滾動
+      // 檢查滾動方向
+      if (currentElement.id === 'section-4') {
+        if (event.deltaY > 0) {
+          // 如果向下滾動並且到達 section-4 的底部，進入下一個區塊
+          const isBottom = currentElement.getBoundingClientRect().bottom <= window.innerHeight;
+          if (isBottom) {
+            currentSectionRef.current = Math.min(currentSection + 1, sections.current.length - 1);
+            sections.current[currentSectionRef.current].scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          // 如果向上滾動並且到達 section-4 的頂部，進入上一個區塊
+          const isTop = currentElement.getBoundingClientRect().top >= 0;
+          if (isTop) {
+            currentSectionRef.current = Math.max(currentSection - 1, 0);
+            sections.current[currentSectionRef.current].scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+        return; // 停止處理，允許自由滾動內部
       }
 
-      isScrolling = true;
-
+      // 一般滾動邏輯
+      isScrollingRef.current = true;
       if (event.deltaY > 0) {
-        currentSection = Math.min(currentSection + 1, sections.length - 1);
+        currentSectionRef.current = Math.min(currentSection + 1, sections.current.length - 1);
       } else {
-        currentSection = Math.max(currentSection - 1, 0);
+        currentSectionRef.current = Math.max(currentSection - 1, 0);
       }
-
-      sections[currentSection].scrollIntoView({ behavior: 'smooth' });
+      sections.current[currentSectionRef.current].scrollIntoView({ behavior: 'smooth' });
 
       setTimeout(() => {
-        isScrolling = false;
+        isScrollingRef.current = false;
       }, 800); // 與滾動動畫時間一致
     };
 
     window.addEventListener('wheel', handleWheel);
-
     return () => {
       window.removeEventListener('wheel', handleWheel); // 清理事件
     };
   }, []);
+
+  const scrollToSection = (ref) => {
+    const targetIndex = Array.from(sections.current).findIndex((section) => section === ref.current);
+
+    if (targetIndex !== -1) {
+      currentSectionRef.current = targetIndex; // 更新 currentSection
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <>
@@ -168,6 +250,8 @@ export default function Temple() {
         <Draw_lots ref={draw_lotsRef} />
 
         <About ref={aboutRef} />
+
+        <GoToTop /> {/* 滾動到頂部按鈕 */}
       </main>
     </>
   );

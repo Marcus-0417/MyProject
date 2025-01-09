@@ -7,6 +7,9 @@ function About(props, ref) {
             <div id="section-6" className="section" ref={ref}>
 
             </div>
+            <footer>
+                
+            </footer>
         </>
     )
 }
