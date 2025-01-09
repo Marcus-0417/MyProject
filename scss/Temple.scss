@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200..900&display=swap');
 
 main {
-    // overflow-x: hidden;
 
     .navbar-transition {
         &-enter {
@@ -44,7 +43,7 @@ main {
             padding-left: 25px;
 
             &:hover {
-                color: #FFC9B9;
+                color: #ff8864;
                 transition: 0.5s;
             }
         }
@@ -250,7 +249,7 @@ main {
             align-items: center;
             flex-direction: column;
             text-align: center;
-            background-image: url('../images/background.jpg');
+            background-image: url('../scss/images/background.jpg');
             background-size: cover;
 
             >h1 {
