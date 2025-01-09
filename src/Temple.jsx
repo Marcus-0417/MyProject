@@ -6,6 +6,8 @@ import Event from './Event';
 import Pray from './Pray';
 import Navbar from './Navbar';
 import { CSSTransition } from 'react-transition-group';
+import Draw_lots from './Draw_lots';
+import About from './About';
 
 /* npm install react-transition-group */
 /* npm install aos */
@@ -44,11 +46,14 @@ export default function Temple() {
     };
   }, []);
 
-  /* 控制滾動至指定區塊 */
+  /* 控制Navbar點擊後滾動至指定區塊 */
   const carouselRef = useRef(null); // 創建 <Carousel />
   const historyRef = useRef(null); // 創建 <History />
   const eventRef = useRef(null); // 創建 <Event />
   const prayRef = useRef(null); // 創建 <Pray />
+  const draw_lotsRef = useRef(null); // 創建 <Draw_lots />
+  const aboutRef = useRef(null); // 創建 <About />
+
 
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
@@ -140,7 +145,9 @@ export default function Temple() {
               if (section === "history") scrollToSection(historyRef);
               if (section === "event") scrollToSection(eventRef);
               if (section === "pray") scrollToSection(prayRef);
-              handleCloseNavbar(); {/* 點擊後關閉Navbar */}
+              if (section === "draw_lots") scrollToSection(draw_lotsRef);
+              if (section === "about") scrollToSection(aboutRef);
+              handleCloseNavbar(); {/* 點擊後關閉Navbar */ }
             }} />
             <img style={{ position: "fixed", bottom: 0, right: 0, width: "30%", height: "auto", objectFit: "cover", transform: "scaleX(-1)" }} src="./images/STONE-2-NBG.png" alt="" />
           </div>
@@ -148,11 +155,15 @@ export default function Temple() {
 
         <Carousel ref={carouselRef} /> {/* 直接綁定 ref */}
 
-        <History ref={historyRef} /> 
+        <History ref={historyRef} />
 
         <Event ref={eventRef} />
 
         <Pray ref={prayRef} />
+
+        <Draw_lots ref={draw_lotsRef} />
+
+        <About ref={aboutRef} />
       </main>
     </>
   );
