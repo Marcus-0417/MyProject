@@ -64,16 +64,17 @@ const Draw_lots = forwardRef((props, ref) => {
 
     return (
         <div id="section-5" className="section" ref={ref}>
-            <div id="all" style={{ textAlign: "center", padding: "20px" }}>
-                <h1>求籤程式</h1>
+            <div id="all" style={{ textAlign: "center", position: "relative" }}>
+                <h1 style={{ marginTop: "160px" }}>求籤程式</h1>
 
                 {currentLot ? (
-                    <div>
-                        <h2>抽到的籤文:</h2>
+                    <div style={{ transition: "0.5s" }}>
+                        {/* <h2>抽到的籤文:</h2> */}
+                        <img style={{ width: "450px", position: "absolute", left: "200px", top: "100px"}} src="./images/poem.png" alt="" />
                         <p>{currentLot}</p>
                     </div>
                 ) : (
-                    <p>請按下「抽籤」來求籤。</p>
+                    <p style={{ fontSize: "20px" }}>請按下「抽籤」開始求籤。</p>
                 )}
 
                 {!currentLot && (
@@ -81,7 +82,7 @@ const Draw_lots = forwardRef((props, ref) => {
                         onClick={drawLot}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        style={{ margin: "10px" }}
+                        style={{ margin: "36px", fontSize:"20px" }}
                     >
                         抽籤
                     </motion.button>
@@ -92,7 +93,7 @@ const Draw_lots = forwardRef((props, ref) => {
                         onClick={throwDivination}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        style={{ margin: "10px" }}
+                        style={{ margin: "36px", fontSize:"20px" }}
                     >
                         擲筊
                     </motion.button>
