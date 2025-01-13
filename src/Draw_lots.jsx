@@ -9,6 +9,9 @@ const lotContents = [
     "凡事莫強求，順其自然。",
     "得此籤者，福祿雙全。",
     "貴人相助，前途光明。",
+    "順其自然，得其所求。",
+    "慈悲之心，得其所求。",
+
     // 其他籤文內容...
 ];
 
@@ -77,8 +80,8 @@ const Draw_lots = forwardRef((props, ref) => {
 
     return (
         <div id="section-5" className="section" ref={ref}>
-            <div id="all" style={{ textAlign: "center", position: "relative" }}>
-                <h1 style={{ marginTop: "160px" }}>求籤程式</h1>
+            <div id="all" style={{ textAlign: "center", position: "relative", border:"1px solid black" }}>
+                <h1 style={{ marginTop: "100px" }}>求籤程式</h1>
 
                 {currentLot ? (
                     <div>
@@ -142,7 +145,7 @@ const Draw_lots = forwardRef((props, ref) => {
                 )}
 
                 {/* 動畫展示區域 */}
-                <div style={{ margin: "20px auto", width: "300px", height: "300px", position: "relative" }}>
+                <div style={{ margin: "20px auto", width: "300px", height: "300px", position: "relative",border:"1px solid black" }}>
                     {isShaking && (
                         <motion.img
                             src="./images/111.png" // 使用 public/images 中的搖籤筒圖片
