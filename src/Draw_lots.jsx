@@ -2,10 +2,23 @@
 import React, { forwardRef, useState } from "react";
 import { motion } from "framer-motion"; //npm i framer-motion
 
-const generateLot = (index) => `第 ${index + 1} 籤: 籤文內容：`;
+
+const lotContents = [
+    "一帆風順，萬事如意。",
+    "山重水復疑無路，柳暗花明又一村。",
+    "凡事莫強求，順其自然。",
+    "得此籤者，福祿雙全。",
+    "貴人相助，前途光明。",
+    // 其他籤文內容...
+];
+
+const generateLot = (index) => ({
+    number:  `${index + 1}`,
+    content: lotContents[index] || "籤文缺失",
+});
 
 const Draw_lots = forwardRef((props, ref) => {
-    const [lots, setLots] = useState(Array.from({ length: 100 }, (_, i) => generateLot(i)));
+    const [lots, setLots] = useState(Array.from({ length: lotContents.length }, (_, i) => generateLot(i)));
     const [currentLot, setCurrentLot] = useState(null);
     const [result, setResult] = useState([]);
     const [complete, setComplete] = useState(false);
@@ -42,9 +55,9 @@ const Draw_lots = forwardRef((props, ref) => {
                     return newResult;
                 }
 
-                if (
-                    newResult.length >= 3 &&
-                    newResult.slice(-3).every((outcome) => outcome === "聖筊")
+                if ( /* 檢查是否連續擲出三次聖筊，原本應是3，但因展示先改為1 */
+                    newResult.length >= 1 &&
+                    newResult.slice(-1).every((outcome) => outcome === "聖筊")
                 ) {
                     setComplete(true);
                     alert("恭喜！成功連續擲出三次聖筊，這支籤是對的！");
@@ -68,10 +81,10 @@ const Draw_lots = forwardRef((props, ref) => {
                 <h1 style={{ marginTop: "160px" }}>求籤程式</h1>
 
                 {currentLot ? (
-                    <div style={{ transition: "0.5s" }}>
-                        {/* <h2>抽到的籤文:</h2> */}
+                    <div>
+                        <h2 style={{position: "absolute", left: "582px", top: "303px",zIndex:"1", fontSize:"32px"}}>{currentLot.number}</h2> {/* 顯示籤號 */}
                         <img style={{ width: "450px", position: "absolute", left: "200px", top: "100px"}} src="./images/poem.png" alt="" />
-                        <p>{currentLot}</p>
+                        <p style={{position: "absolute", left: "350px", top: "320px",zIndex:"1"}}>{currentLot.content}</p>   {/* 顯示籤文內容 */}
                     </div>
                 ) : (
                     <p style={{ fontSize: "20px" }}>請按下「抽籤」開始求籤。</p>
