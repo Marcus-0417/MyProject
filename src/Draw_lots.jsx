@@ -4,19 +4,18 @@ import { motion } from "framer-motion"; //npm i framer-motion
 
 
 const lotContents = [
-    "一帆風順，萬事如意。",
-    "山重水復疑無路，柳暗花明又一村。",
-    "凡事莫強求，順其自然。",
-    "得此籤者，福祿雙全。",
-    "貴人相助，前途光明。",
-    "順其自然，得其所求。",
-    "慈悲之心，得其所求。",
+    "日出便見風雲散 光明清淨照世間 一向前途通大道 萬事清吉保平安",
+    "於今此景正當時 看看欲吐百花魁 若能遇得春色到 一洒清吉脫塵埃",
+    "勸君把定心莫虛 天註衣祿自有餘 和合重重常吉慶 時來終遇得明珠",
+    "風恬浪靜可行舟 恰是中秋月一輪 凡事不須多憂慮 福祿自有慶家門",
+    "只恐前途命有變 勸君作急可宜先 且守長江無大事 命逢太白守身邊",
+    "舊恨重重未改為 家中禍患不臨身 須當謹防宜作福 龍蛇交會得和合",
 
     // 其他籤文內容...
 ];
 
 const generateLot = (index) => ({
-    number:  `${index + 1}`,
+    number: `${index + 1}`,
     content: lotContents[index] || "籤文缺失",
 });
 
@@ -80,25 +79,32 @@ const Draw_lots = forwardRef((props, ref) => {
 
     return (
         <div id="section-5" className="section" ref={ref}>
-            <div id="all" style={{ textAlign: "center", position: "relative", border:"1px solid black" }}>
-                <h1 style={{ marginTop: "100px" }}>求籤程式</h1>
 
+            <div id="all-left">
                 {currentLot ? (
                     <div>
-                        <h2 style={{position: "absolute", left: "582px", top: "303px",zIndex:"1", fontSize:"32px"}}>{currentLot.number}</h2> {/* 顯示籤號 */}
-                        <img style={{ width: "450px", position: "absolute", left: "200px", top: "100px"}} src="./images/poem.png" alt="" />
-                        <p style={{position: "absolute", left: "350px", top: "320px",zIndex:"1"}}>{currentLot.content}</p>   {/* 顯示籤文內容 */}
+                        <h2 style={{ position: "absolute", left: "582px", top: "303px", zIndex: "1", fontSize: "32px" }}>{currentLot.number}</h2> {/* 顯示籤號 */}
+                        <img style={{ width: "450px", position: "absolute", left: "200px", top: "100px" }} src="./images/poem.png" alt="" />
+                        <p style={{
+                            position: "absolute", left: "300px", top: "195px", zIndex: "1", writingMode: "vertical-rl", /* 垂直排列，從右到左 */
+                            textOrientation: "upright", /* 每個字元直立顯示 */ whiteSpace: "pre-wrap", width: "250px", height: "270px", fontSize: "26px", letterSpacing: "11px", display: "flex", justifyContent: "center", alignItems: "center",
+                        }}>{currentLot.content}</p>   {/* 顯示籤文內容 */}
                     </div>
                 ) : (
-                    <p style={{ fontSize: "20px" }}>請按下「抽籤」開始求籤。</p>
+                    <div>
+                        <h1>求籤程式</h1>
+                        <p style={{ fontSize: "20px" }}>請按下「抽籤」開始求籤。</p>
+                    </div>
                 )}
+            </div>
 
+            <div id="all-right">
                 {!currentLot && (
                     <motion.button
                         onClick={drawLot}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        style={{ margin: "36px", fontSize:"20px" }}
+                        style={{ margin: "30px", fontSize: "20px" }}
                     >
                         抽籤
                     </motion.button>
@@ -109,7 +115,7 @@ const Draw_lots = forwardRef((props, ref) => {
                         onClick={throwDivination}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        style={{ margin: "36px", fontSize:"20px" }}
+                        style={{ margin: "30px", fontSize: "20px" }}
                     >
                         擲筊
                     </motion.button>
@@ -143,37 +149,37 @@ const Draw_lots = forwardRef((props, ref) => {
                         </motion.button>
                     </div>
                 )}
+            </div>
 
-                {/* 動畫展示區域 */}
-                <div style={{ margin: "20px auto", width: "300px", height: "300px", position: "relative",border:"1px solid black" }}>
-                    {isShaking && (
-                        <motion.img
-                            src="./images/111.png" // 使用 public/images 中的搖籤筒圖片
-                            alt="搖籤筒"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1, rotate: [0, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, 0] }}
-                            transition={{ duration: 3 }}
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                            }}
-                        />
-                    )}
+            {/* 動畫展示區域 */}
+            <div style={{ margin: "20px 0", width: "33%", height: "300px", position: "relative", border: "1px solid black" }}>
+                {isShaking && (
+                    <motion.img
+                        src="./images/111.png"
+                        alt="搖籤筒"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, rotate: [0, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, -20, 20, 0] }}
+                        transition={{ duration: 3 }}
+                        style={{
+                            width: "300px",
+                            height: "100%",
+                        }}
+                    />
+                )}
 
-                    {isFlipping && (
-                        <motion.img
-                            src="./images/222.png" // 使用 public/images 中的擲筊圖片
-                            alt="擲筊翻轉"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1, rotateY: [0, 180, 360, 180, 360, 180, 360, 180, 360, 180, 360, 180, 360, 180, 360] }}
-                            transition={{ duration: 2 }}
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                            }}
-                        />
-                    )}
-                </div>
+                {isFlipping && (
+                    <motion.img
+                        src="./images/222.png"
+                        alt="擲筊翻轉"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1, rotateY: [0, 180, 360, 180, 360, 180, 360, 180, 360, 180, 360, 180, 360, 180, 360] }}
+                        transition={{ duration: 2 }}
+                        style={{
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    />
+                )}
             </div>
         </div>
     );
