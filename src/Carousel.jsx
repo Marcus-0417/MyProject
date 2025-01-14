@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import 'swiper/css';
@@ -7,7 +7,6 @@ import 'swiper/css/bundle';
 import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 
 const Carousel = forwardRef((props, ref) => {
-
 
     return (
         <>

@@ -185,17 +185,7 @@ export default function Temple() {
         {/* 漢堡按鈕 */}
         <button
           onClick={handleToggleNavbar}
-          style={{
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            fontSize: "36px",
-            position: "fixed",
-            top: "30px",
-            right: "30px",
-            zIndex: 1100,
-            color: iconColor, // 動態設置圖標顏色
-          }}
+          style={{ color: iconColor }} // 動態設置圖標顏色
         >
           {isNavbarVisible ? "✖" : "☰"} {/* 漢堡圖標 or 打叉 */}
         </button>
@@ -208,22 +198,10 @@ export default function Temple() {
           classNames="navbar-transition"
           unmountOnExit
         >
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.85)",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              zIndex: 1000,
-            }}>
-
-            <img style={{ position: "fixed", bottom: 0, left: 0, width: "30%", height: "auto", objectFit: "cover" }} src="./images/STONE-2-NBG.webp" alt="" />
-            <img style={{ position: "fixed", opacity: "0.5", transform: "translate(-50%, 50%)", bottom: "50%", left: "50%", width: "38%", height: "auto", objectFit: "cover", zIndex: "-1" }} src="./images/moon.png" alt="" />
+          <div id="CSSTransition">
+            <img id='Stone-Left' src="./images/STONE-2-NBG.webp" alt="" />
+            <img id='Moon' src="./images/moon.png" alt="" />
+            <img id='Stone-Right' src="./images/STONE-2-NBG.webp" alt="" />
 
             <Navbar onScrollToSection={(section) => {
               if (section === "carousel") scrollToSection(carouselRef);
@@ -234,8 +212,6 @@ export default function Temple() {
               if (section === "about") scrollToSection(aboutRef);
               handleCloseNavbar(); {/* 點擊後關閉Navbar */ }
             }} />
-
-            <img style={{ position: "fixed", bottom: 0, right: 0, width: "30%", height: "auto", objectFit: "cover", transform: "scaleX(-1)" }} src="./images/STONE-2-NBG.webp" alt="" />
           </div>
         </CSSTransition>
 

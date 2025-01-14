@@ -10,10 +10,6 @@ function History(props, ref) {
           <p>遂自福建故居地雕塑『福德正神』金身</p>
           <p>迎奉建廟供祀，是為『關廂境廟』之肇始。</p>
         </div>
-
-        <div id="History-text2">
-
-        </div>
       </div>
     </>
   );

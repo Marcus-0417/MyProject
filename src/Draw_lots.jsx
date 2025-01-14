@@ -82,14 +82,15 @@ const Draw_lots = forwardRef((props, ref) => {
 
             <div id="all-left">
                 {currentLot ? (
-                    <div>
-                        <h2 style={{ position: "absolute", left: "582px", top: "303px", zIndex: "1", fontSize: "32px" }}>{currentLot.number}</h2> {/* 顯示籤號 */}
-                        <img style={{ width: "450px", position: "absolute", left: "200px", top: "100px" }} src="./images/poem.png" alt="" />
-                        <p style={{
-                            position: "absolute", left: "300px", top: "195px", zIndex: "1", writingMode: "vertical-rl", /* 垂直排列，從右到左 */
-                            textOrientation: "upright", /* 每個字元直立顯示 */ whiteSpace: "pre-wrap", width: "250px", height: "270px", fontSize: "26px", letterSpacing: "11px", display: "flex", justifyContent: "center", alignItems: "center",
-                        }}>{currentLot.content}</p>   {/* 顯示籤文內容 */}
-                    </div>
+                    <motion.div id="lot-wrapper"
+                        initial={{ opacity: 0, y: 200 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.5 }}
+                    >
+                        <h2>{currentLot.number}</h2> {/* 顯示籤號 */}
+                        <img src="./images/poem.png" alt="" />
+                        <p>{currentLot.content}</p>   {/* 顯示籤文內容 */}
+                    </motion.div>
                 ) : (
                     <div>
                         <h1>求籤程式</h1>
@@ -152,9 +153,10 @@ const Draw_lots = forwardRef((props, ref) => {
             </div>
 
             {/* 動畫展示區域 */}
-            <div style={{ margin: "20px 0", width: "33%", height: "300px", position: "relative", border: "1px solid black" }}>
+            <div id="animation">
                 {isShaking && (
                     <motion.img
+                        id="shake"
                         src="./images/111.png"
                         alt="搖籤筒"
                         initial={{ opacity: 0 }}
@@ -169,6 +171,7 @@ const Draw_lots = forwardRef((props, ref) => {
 
                 {isFlipping && (
                     <motion.img
+                        id="flip"
                         src="./images/222.png"
                         alt="擲筊翻轉"
                         initial={{ opacity: 0 }}
