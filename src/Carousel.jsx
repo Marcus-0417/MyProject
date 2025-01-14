@@ -16,6 +16,7 @@ const Carousel = forwardRef((props, ref) => {
                     speed={1000} // 調整動畫速度（1000 毫秒 = 1 秒）
                     spaceBetween={30}
                     centeredSlides={true}
+                    loop={true}
                     autoplay={{
                         delay: 3500,
                         disableOnInteraction: false,

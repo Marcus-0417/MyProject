@@ -20,7 +20,7 @@ function Pray(props, ref) {
                 <div className="Pray-wrapper">
                     <p data-aos="flip-left" data-aos-duration="1500">在籤筒中搖動籤，直到一支籤自然掉出或從其中自行抽出一支籤，記下籤號或籤文。</p>
                     <h2>貳·求籤</h2>
-                    <img data-aos="fade-up-left" data-aos-duration="3000" src="./images/Pray-2.jpg" alt="" />
+                    <img data-aos="fade-up-left" data-aos-duration="3000" style={{borderRadius:"50px 0 0 50px"}} src="./images/Pray-2.jpg" alt="" />
                 </div>
 
                 <div className="Pray-wrapper">

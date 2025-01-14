@@ -282,8 +282,7 @@ main {
 
     @media(max-width: 640px) {
         #section-3 {
-            background-size: contain;
-            background-repeat: no-repeat;
+            background-size: cover;
 
             .Event-wrapper {
                 width: 100%;
@@ -505,9 +504,9 @@ main {
         #animation {
             margin: 20px 0;
             width: 33%;
-            height: 300px;
+            height: auto;
             position: relative;
-            border: 1px solid #000000;
+            // border: 1px solid #000000;
         }
     }
 
@@ -579,7 +578,12 @@ main {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        background-image: linear-gradient(to bottom, #FFF2E0, #FFEDB3, #FFC9B9);
+        // background-image: linear-gradient(to bottom, #FFF2E0, #FFEDB3, #FFC9B9);
+        background-image: url(../scss/images/TEMPLE3.png);
+        background-size: cover;
+        background-attachment: fixed;
+        overflow: hidden;
+        z-index: 1;
 
         iframe {
             width: 70%;
@@ -588,11 +592,11 @@ main {
         }
 
         #Small-Stone-Left {
-            width: 8%;
+            width: 6.5%;
             position: absolute;
             bottom: 0;
             left: 0;
-            margin-bottom: 260px;
+            margin-bottom: 0px;
         }
 
         #Small-Stone-Right {
@@ -600,8 +604,9 @@ main {
             position: absolute;
             bottom: 0;
             right: 0;
-            margin-bottom: 260px;
+            margin-bottom: 180px;
             transform: scaleX(-1);
+            display: none;
         }
 
         footer {
@@ -611,23 +616,38 @@ main {
             width: 100%;
             background-color: #DFDFDF;
             font-family: 'Noto serif TC', sans-serif;
+            height: 180px;
 
             #Footer-Left {
                 text-align: left;
-                margin: 100px 0 0 50px;
+                margin-left: 800px;
 
                 h3 {
                     font-size: 24px;
                     text-align: center;
-                    margin-bottom: 20px;
+                    margin-bottom: 15px;
+                }
+
+                a{
+                    width: 35px;
+                    margin: 0 15px 15px 0; 
                 }
             }
 
             #Footer-Right {
                 text-align: left;
-                margin-top: 190px;
+                margin: 100px 100px 0 0;
             }
         }
+    }
+
+    #section-6::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.6);
+        z-index: -1;
     }
 
     @media(max-width: 640px) {
@@ -646,31 +666,6 @@ main {
             #Small-Stone-Right {
                 width: 15%;
             }
-        }
-    }
-
-    footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        background-color: #DFDFDF;
-        font-family: 'Noto serif TC', sans-serif;
-
-        #Footer-Left {
-            text-align: left;
-            margin: 100px 0 0 50px;
-
-            h3 {
-                font-size: 24px;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-        }
-
-        #Footer-Right {
-            text-align: left;
-            margin-top: 190px;
         }
     }
 
