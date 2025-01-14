@@ -75,7 +75,6 @@ const Draw_lots = forwardRef((props, ref) => {
             });
         }, 2000); // 動畫持續 2 秒
     };
-
     const reset = () => {
         setCurrentLot(null);
         setResult([]);
@@ -140,13 +139,13 @@ const Draw_lots = forwardRef((props, ref) => {
 
                 {complete && (
                     <div>
-                        <h2 style={{ color: "green" }}>這支籤是要給你的！</h2>
+                        <h2 style={{ color: "green", fontSize: "30px", marginTop: "30px" }}>這支籤是要給你的！</h2>
                         <motion.button
                             onClick={reset}
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             style={{
-                                margin: "10px",
+                                marginTop: "50px",
                                 backgroundColor: "#f00",
                                 color: "#fff",
                             }}
