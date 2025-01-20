@@ -10,7 +10,6 @@ import Draw_lots from './Draw_lots';
 import About from './About';
 import GoToTop from './GoToTop';
 
-
 /* npm install react-transition-group */
 /* npm install aos */
 /* npm i swiper */
@@ -62,7 +61,7 @@ export default function Temple() {
   //   ref.current.scrollIntoView({ behavior: "smooth" });
   // };
 
-  // /* 設置滾動區 */
+  /* 設置滾動區 */
   // useEffect(() => {
   //   const sections = document.querySelectorAll('.section');
   //   let currentSection = 0;
